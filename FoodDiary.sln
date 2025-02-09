@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FD.Tests", "FD.Tests\FD.Tests.csproj", "{91A39877-9F54-4CFF-822C-1F49AA1A4B9C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDiary", "FoodDiary\FoodDiary.csproj", "{4AE590DE-7840-48EA-A080-789EB1C197FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91A39877-9F54-4CFF-822C-1F49AA1A4B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A39877-9F54-4CFF-822C-1F49AA1A4B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A39877-9F54-4CFF-822C-1F49AA1A4B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A39877-9F54-4CFF-822C-1F49AA1A4B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE590DE-7840-48EA-A080-789EB1C197FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE590DE-7840-48EA-A080-789EB1C197FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE590DE-7840-48EA-A080-789EB1C197FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE590DE-7840-48EA-A080-789EB1C197FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49977A8F-9494-4547-8D9E-BE3D68EDB90B}
+	EndGlobalSection
+EndGlobal
