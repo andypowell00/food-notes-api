@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodDiary.Migrations
 {
     [DbContext(typeof(FoodDiaryContext))]
-    [Migration("20250204235125_InitialCreate")]
+    [Migration("20250210140459_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -35,6 +35,8 @@ namespace FoodDiary.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Entries");
+
+                    b.HasAnnotation("Sqlite:CreateTrigger", "CREATE TRIGGER UpdateSymptomatic\r\n                AFTER INSERT ON EntrySymptoms\r\n                BEGIN\r\n                    UPDATE Entries \r\n                    SET Symptomatic = 1 \r\n                    WHERE Id = NEW.EntryId;\r\n                END;\r\n\r\n                CREATE TRIGGER UpdateSymptomaticOnDelete\r\n                AFTER DELETE ON EntrySymptoms\r\n                BEGIN\r\n                    SELECT CASE WHEN (SELECT COUNT(*) FROM EntrySymptoms WHERE EntryId = OLD.EntryId) = 0 THEN\r\n                        UPDATE Entries \r\n                        SET Symptomatic = 0 \r\n                        WHERE Id = OLD.EntryId;\r\n                    END;\r\n                END;");
                 });
 
             modelBuilder.Entity("FoodDiary.Models.EntryIngredient", b =>
