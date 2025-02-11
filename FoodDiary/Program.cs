@@ -45,7 +45,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("ProductionCors", policy =>
     {
         policy.WithOrigins(allowedOrigins) // Specify allowed domains
-              .WithMethods("GET", "POST", "PUT", "DELETE")
+              .WithMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
               .WithHeaders("Content-Type", "Authorization"); // Restrict headers
     });
 });
@@ -66,6 +66,7 @@ else
 
 // Use custom API key authentication middleware
 app.UseMiddleware<ApiKeyMiddleware>();
+
 
 // Enable Routing and Map Controllers
 app.UseRouting();
