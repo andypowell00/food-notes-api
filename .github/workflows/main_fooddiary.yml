@@ -46,6 +46,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
+      
+      - name: Apply Entity Framework Core Migrations
+        run: |
+          dotnet tool install --global dotnet-ef
+          cd myapp
+          dotnet ef database update
+        env:
+          ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}    
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
