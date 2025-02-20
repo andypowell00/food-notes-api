@@ -50,7 +50,6 @@ jobs:
       - name: Apply Entity Framework Core Migrations
         run: |
           dotnet tool install --global dotnet-ef
-          cd myapp
           dotnet ef database update
         env:
           ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}    
