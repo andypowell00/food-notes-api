@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using FoodDiary.DTOs;
+using FoodDiary.DTOs.Create;
+using FoodDiary.DTOs.Update;
 using FoodDiary.Models;
 using System.Linq;
 
@@ -26,7 +28,11 @@ public class MappingProfile : Profile
         CreateMap<CreateIngredientDto, Ingredient>();
         CreateMap<UpdateIngredientDto, Ingredient>();
 
-        // EntryIngredient and EntrySymptom mappings
+        // Supplement mappings
+        CreateMap<Supplement, SupplementDto>();
+        CreateMap<CreateSupplementDto, Supplement>();
+
+        // EntryIngredient,EntrySymptom and EntrySupplement mappings
         CreateMap<EntryIngredient, EntryIngredientDto>()
             .ForMember(dest => dest.IngredientName, opt => opt.MapFrom(src => src.Ingredient.Name));
         CreateMap<CreateEntryIngredientDto, EntryIngredient>();
@@ -35,6 +41,14 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.SymptomTitle, opt => opt.MapFrom(src => src.Symptom.Title));
         CreateMap<CreateEntrySymptomDto, EntrySymptom>();
         CreateMap<UpdateEntrySymptomDto, EntrySymptom>();
+        CreateMap<EntrySupplement, EntrySupplementDto>()
+            .ForMember(dest => dest.SupplementName, opt => opt.MapFrom(src => src.Supplement.Name));
+        CreateMap<CreateEntrySupplementDto, EntrySupplement>();
+
+
+        //Safe and Unsafe Ingredient mappings
+        CreateMap<CreateSafeIngredientDto, SafeIngredient>();
+        CreateMap<CreateUnsafeIngredientDto, UnsafeIngredient>();
 
     }
 }

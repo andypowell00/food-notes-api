@@ -22,9 +22,13 @@ builder.Services.AddSingleton(new ApiKeyValidator(apiKey));
 // Register services
 builder.Services.AddScoped<IEntryService, EntryService>();
 builder.Services.AddScoped<ISymptomService, SymptomService>();
+builder.Services.AddScoped<ISupplementService, SupplementService>();
 builder.Services.AddScoped<IIngredientService, IngredientService>();
 builder.Services.AddScoped<IEntryIngredientService, EntryIngredientService>();
 builder.Services.AddScoped<IEntrySymptomService, EntrySymptomService>();
+builder.Services.AddScoped<IEntrySupplementService, EntrySupplementService>();
+builder.Services.AddScoped<ISafeIngredientService, SafeIngredientService>();
+builder.Services.AddScoped<IUnsafeIngredientService, UnsafeIngredientService>();
 
 // Add Controllers and Swagger
 builder.Services.AddControllers();

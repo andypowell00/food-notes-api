@@ -3,6 +3,8 @@ using FoodDiary.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using FoodDiary.DTOs;
+using FoodDiary.DTOs.Create;
+using FoodDiary.DTOs.Update;
 
 namespace FoodDiary.Controllers
 {

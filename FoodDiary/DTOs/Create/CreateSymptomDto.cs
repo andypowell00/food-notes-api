@@ -1,4 +1,4 @@
-﻿namespace FoodDiary.DTOs
+﻿namespace FoodDiary.DTOs.Create
 {
     public class CreateSymptomDto
     {

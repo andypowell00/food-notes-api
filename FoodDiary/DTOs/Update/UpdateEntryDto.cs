@@ -1,4 +1,6 @@
-﻿namespace FoodDiary.DTOs
+﻿using FoodDiary.DTOs.Create;
+
+namespace FoodDiary.DTOs.Update
 {
     public class UpdateEntryDto : CreateEntryDto
     {

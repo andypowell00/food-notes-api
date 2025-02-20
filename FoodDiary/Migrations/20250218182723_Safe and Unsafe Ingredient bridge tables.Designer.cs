@@ -3,6 +3,7 @@ using System;
 using FoodDiary.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodDiary.Migrations
 {
     [DbContext(typeof(FoodDiaryContext))]
-    partial class FoodDiaryContextModelSnapshot : ModelSnapshot
+    [Migration("20250218182723_Safe and Unsafe Ingredient bridge tables")]
+    partial class SafeandUnsafeIngredientbridgetables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
@@ -51,21 +54,6 @@ namespace FoodDiary.Migrations
                     b.HasIndex("IngredientId");
 
                     b.ToTable("EntryIngredients");
-                });
-
-            modelBuilder.Entity("FoodDiary.Models.EntrySupplement", b =>
-                {
-                    b.Property<int>("EntryId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SupplementId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("EntryId", "SupplementId");
-
-                    b.HasIndex("SupplementId");
-
-                    b.ToTable("EntrySupplements");
                 });
 
             modelBuilder.Entity("FoodDiary.Models.EntrySymptom", b =>
@@ -118,21 +106,6 @@ namespace FoodDiary.Migrations
                     b.ToTable("SafeIngredients");
                 });
 
-            modelBuilder.Entity("FoodDiary.Models.Supplement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Supplements");
-                });
-
             modelBuilder.Entity("FoodDiary.Models.Symptom", b =>
                 {
                     b.Property<int>("Id")
@@ -181,25 +154,6 @@ namespace FoodDiary.Migrations
                     b.Navigation("Entry");
 
                     b.Navigation("Ingredient");
-                });
-
-            modelBuilder.Entity("FoodDiary.Models.EntrySupplement", b =>
-                {
-                    b.HasOne("FoodDiary.Models.Entry", "Entry")
-                        .WithMany()
-                        .HasForeignKey("EntryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FoodDiary.Models.Supplement", "Supplement")
-                        .WithMany()
-                        .HasForeignKey("SupplementId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Entry");
-
-                    b.Navigation("Supplement");
                 });
 
             modelBuilder.Entity("FoodDiary.Models.EntrySymptom", b =>
