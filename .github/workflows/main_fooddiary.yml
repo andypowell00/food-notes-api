@@ -57,7 +57,9 @@ jobs:
           package: .
 
       - name: Run EF Core Migrations on Azure
+        env:
+          PROJECT_ROOT: ${{ secrets.PROJECT_ROOT }}  
         run: |
           dotnet tool install --global dotnet-ef
-          cd ${{ secrets.PROJECT_ROOT }}  
           dotnet ef database update --verbose  
+  
