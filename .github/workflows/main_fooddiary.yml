@@ -46,13 +46,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-          
-      - name: Apply Entity Framework Core Migrations
-        run: |
-          dotnet tool install --global dotnet-ef
-          dotnet ef database update
-        env:
-          ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}    
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -62,3 +55,9 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D76EEC5A898E406588C5214D9F4EFDA4 }}
           package: .
+
+      - name: Run EF Core Migrations on Azure
+        run: |
+          dotnet tool install --global dotnet-ef
+          cd ${{ secrets.PROJECT_ROOT }}  
+          dotnet ef database update --verbose  
