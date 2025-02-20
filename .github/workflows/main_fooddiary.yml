@@ -47,15 +47,9 @@ jobs:
         with:
           name: .net-app
           
-      - name: Debug working directory
-        run: |
-          pwd
-          ls
-        
       - name: Apply Entity Framework Core Migrations
         run: |
           dotnet tool install --global dotnet-ef
-          cd FoodDiary
           dotnet ef database update
         env:
           ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}    
