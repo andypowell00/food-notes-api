@@ -48,14 +48,16 @@ jobs:
           name: .net-app
           
       - name: Debug working directory
-        run: pwd
+        run: |
+          pwd
+          ls
         
       - name: Apply Entity Framework Core Migrations
         run: |
           dotnet tool install --global dotnet-ef
+          cd FoodDiary
           dotnet ef database update
         env:
-          path: ${{ env.DOTNET_ROOT }}
           ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}    
 
       - name: Deploy to Azure Web App
