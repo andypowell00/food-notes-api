@@ -55,12 +55,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D76EEC5A898E406588C5214D9F4EFDA4 }}
           package: .
-
-      - name: Run EF Core Migrations on Azure
-        env:
-          PROJECT_ROOT: ${{ secrets.PROJECT_ROOT }}  
-        run: |
-          dotnet tool install --global dotnet-ef
-          ls
-          dotnet ef database update --verbose  
   
