@@ -61,5 +61,6 @@ jobs:
           PROJECT_ROOT: ${{ secrets.PROJECT_ROOT }}  
         run: |
           dotnet tool install --global dotnet-ef
+          ls
           dotnet ef database update --verbose  
   
