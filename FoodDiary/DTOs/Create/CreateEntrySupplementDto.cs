@@ -1,4 +1,6 @@
-﻿namespace FoodDiary.DTOs.Create
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FoodDiary.DTOs.Create
 {
     public class CreateEntrySupplementDto
     {

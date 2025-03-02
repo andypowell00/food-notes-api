@@ -4,6 +4,7 @@ using FoodDiary.Services.Abstract;
 using FoodDiary.Middleware;
 using Microsoft.EntityFrameworkCore;
 using FoodDiary.Helpers;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,20 @@ builder.Services.AddScoped<ISafeIngredientService, SafeIngredientService>();
 builder.Services.AddScoped<IUnsafeIngredientService, UnsafeIngredientService>();
 
 // Add Controllers and Swagger
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            // Log validation errors 
+            var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+            logger.LogWarning("Validation failed: {@ValidationErrors}", context.ModelState);
+
+            // Return empty 500 response, matching your middleware
+            context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            return new EmptyResult();
+        };
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(Program));
@@ -55,6 +69,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Enable Swagger in Development
 if (app.Environment.IsDevelopment())
