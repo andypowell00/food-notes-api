@@ -4,7 +4,7 @@ trigger:
       - main  # Runs on main branch push 
 
 pool:
-  vmImage: 'windows-latest'  
+  name: Default  
 
 stages:
 - stage: Build
