@@ -48,6 +48,6 @@ stages:
     - task: AzureWebApp@1
       inputs:
         appType: webApp      
-        azureSubscription: $(azureSub)
+        azureSubscription: '$(azureSub)'
         appName: 'FoodDiary'
         package: '$(System.ArtifactsDirectory)/drop'
