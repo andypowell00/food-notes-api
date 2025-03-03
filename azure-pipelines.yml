@@ -51,3 +51,4 @@ stages:
         azureSubscription: '$(azSub)'
         appName: 'FoodDiary'
         package: '$(System.ArtifactsDirectory)/drop'
+        deploymentMethod: 'zipDeploy'
