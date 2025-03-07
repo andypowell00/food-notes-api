@@ -51,8 +51,9 @@ namespace FoodDiary.Services
         public async Task DeleteEntrySymptomAsync(EntrySymptom entrySymptom)
         {
             _context.EntrySymptoms.Remove(entrySymptom);
+            await _context.SaveChangesAsync(); // Commit deletion first
 
-            // Check if any symptoms remain
+            // Check if any symptoms remain after deletion
             var remainingSymptoms = await _context.EntrySymptoms
                 .CountAsync(es => es.EntryId == entrySymptom.EntryId);
 
@@ -62,10 +63,10 @@ namespace FoodDiary.Services
                 if (entry != null)
                 {
                     entry.Symptomatic = false;
+                    await _context.SaveChangesAsync(); // Save the symptomatic flag change
                 }
             }
-
-            await _context.SaveChangesAsync();
         }
+
     }
 }

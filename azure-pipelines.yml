@@ -25,6 +25,18 @@ stages:
       displayName: 'Build with .NET'
 
     - script: |
+    dotnet test FD.Tests --configuration Release --logger trx --results-directory $(Build.ArtifactStagingDirectory)/TestResults
+    displayName: 'Run Unit Tests'
+
+        - task: PublishTestResults@2
+            inputs:
+            testResultsFormat: 'VSTest'
+            testResultsFiles: '**/*.trx'
+            searchFolder: '$(Build.ArtifactStagingDirectory)/TestResults'
+            condition: always()
+            displayName: 'Publish Test Results'
+
+    - script: |
         dotnet publish -c Release -o $(Build.ArtifactStagingDirectory)/myapp
       displayName: 'dotnet publish'
 

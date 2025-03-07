@@ -2,10 +2,6 @@
 using FoodDiary.Services;
 using FoodDiary.Data;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 public class EntryServiceTests : IDisposable
 {
