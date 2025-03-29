@@ -1,9 +1,8 @@
-﻿namespace FoodDiary.DTOs
+namespace FoodDiary.DTOs
 {
-    public class SymptomDto
+    public record SymptomDto
     {
         public int Id { get; set; }
-        public string? Title { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
-
 }

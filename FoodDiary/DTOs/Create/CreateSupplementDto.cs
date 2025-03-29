@@ -1,6 +1,6 @@
 ﻿namespace FoodDiary.DTOs.Create
 {
-    public class CreateSupplementDto
+    public record CreateSupplementDto
     {
         public string Name { get; set; } = string.Empty;
     }

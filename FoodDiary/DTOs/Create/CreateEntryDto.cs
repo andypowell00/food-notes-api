@@ -1,6 +1,6 @@
-﻿namespace FoodDiary.DTOs.Create
+namespace FoodDiary.DTOs.Create
 {
-    public class CreateEntryDto
+    public record CreateEntryDto
     {
         public DateTime Date { get; set; }
         public bool Symptomatic { get; set; }

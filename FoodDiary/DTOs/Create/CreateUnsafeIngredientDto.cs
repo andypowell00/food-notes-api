@@ -1,6 +1,6 @@
 ﻿namespace FoodDiary.DTOs.Create
 {
-    public class CreateUnsafeIngredientDto
+    public record CreateUnsafeIngredientDto
     {
         public int IngredientId { get; set; }
     }

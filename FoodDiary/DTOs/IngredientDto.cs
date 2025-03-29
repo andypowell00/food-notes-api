@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace FoodDiary.DTOs
 {
-    public class IngredientDto
+    public record IngredientDto
     {
         public int Id { get; set; }
        

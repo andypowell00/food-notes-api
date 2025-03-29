@@ -1,6 +1,6 @@
-﻿namespace FoodDiary.DTOs.Update
+namespace FoodDiary.DTOs.Update
 {
-    public class UpdateIngredientDto
+    public record UpdateIngredientDto
     {
         public int Id { get; set; }
     }

@@ -1,6 +1,6 @@
-﻿namespace FoodDiary.DTOs
+namespace FoodDiary.DTOs
 {
-    public class EntrySymptomDto
+    public record EntrySymptomDto
     {
         public int EntryId { get; set; }
         public int SymptomId { get; set; }

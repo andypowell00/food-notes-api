@@ -1,6 +1,6 @@
 ﻿namespace FoodDiary.DTOs.Create
 {
-    public class CreateEntrySymptomDto
+    public record CreateEntrySymptomDto
     {
         public int EntryId { get; set; }
         public int SymptomId { get; set; }

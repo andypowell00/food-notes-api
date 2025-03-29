@@ -2,7 +2,7 @@
 
 namespace FoodDiary.DTOs.Create
 {
-    public class CreateEntrySupplementDto
+    public record CreateEntrySupplementDto
     {
         public int EntryId { get; set; }
         public int SupplementId { get; set; }

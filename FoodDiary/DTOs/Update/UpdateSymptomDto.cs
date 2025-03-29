@@ -1,6 +1,6 @@
-﻿namespace FoodDiary.DTOs.Update
+namespace FoodDiary.DTOs.Update
 {
-    public class UpdateSymptomDto
+    public record UpdateSymptomDto
     {
         public int Id { get; set; }
     }

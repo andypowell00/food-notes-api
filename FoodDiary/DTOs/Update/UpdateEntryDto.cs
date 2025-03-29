@@ -1,10 +1,8 @@
-﻿using FoodDiary.DTOs.Create;
+using FoodDiary.DTOs.Create;
 
 namespace FoodDiary.DTOs.Update
 {
-    public class UpdateEntryDto : CreateEntryDto
+    public record UpdateEntryDto(int Id) : CreateEntryDto
     {
-        public int Id { get; set; }
     }
-
 }

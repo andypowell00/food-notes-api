@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace FoodDiary.DTOs.Update
 {
-    public class UpdateEntryIngredientDto
+    public record UpdateEntryIngredientDto
     {
         
         [StringLength(500, MinimumLength = 1, ErrorMessage = "Notes must be between 1 and 500 characters.")]
