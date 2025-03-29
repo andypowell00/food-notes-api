@@ -4,7 +4,7 @@ trigger:
       - main  # Runs on main branch push 
 
 pool:
-  name: Default  
+  name: Azure Pipelines  
 
 stages:
 - stage: Build
