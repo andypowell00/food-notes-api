@@ -1,4 +1,4 @@
-﻿using FoodDiary.Data;
+using FoodDiary.Data;
 using FoodDiary.Models;
 using FoodDiary.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +25,7 @@ namespace FoodDiary.Services
         public async Task<EntrySupplement?> GetEntrySupplementByIdAsync(int entryId, int SupplementId)
         {
             return await _context.EntrySupplements
+                .Include(es => es.Supplement) // Include the Supplement navigation property
                 .FirstOrDefaultAsync(ei => ei.EntryId == entryId && ei.SupplementId == SupplementId);
         }
 

@@ -1,10 +1,7 @@
 namespace FoodDiary.DTOs
 {
-    public record EntrySupplementDto
-    {
-        public int EntryId { get; set; }
-        public int SupplementId { get; set; }
-        public string SupplementName { get; set; } = string.Empty;
-
-    }
+    public record EntrySupplementDto(
+        int EntryId,
+        int SupplementId,
+        string SupplementName = "");
 }

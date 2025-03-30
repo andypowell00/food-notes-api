@@ -1,4 +1,4 @@
-﻿using FoodDiary.Models;
+using FoodDiary.Models;
 using FoodDiary.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
@@ -48,7 +48,14 @@ namespace FoodDiary.Controllers
             var entrySymptom = _mapper.Map<EntrySymptom>(createEntrySymptomDto);
             await _entrySymptomService.CreateEntrySymptomAsync(entrySymptom);
 
-            var entrySymptomDto = _mapper.Map<EntrySymptomDto>(entrySymptom);
+            // Reload the entity with navigation properties after creation
+            var createdEntrySymptom = await _entrySymptomService.GetEntrySymptomByIdAsync(
+                entrySymptom.EntryId, entrySymptom.SymptomId);
+            
+            if (createdEntrySymptom == null)
+                return StatusCode(500, "Created entity could not be retrieved");
+
+            var entrySymptomDto = _mapper.Map<EntrySymptomDto>(createdEntrySymptom);
             return CreatedAtAction(nameof(GetEntrySymptomById),
                 new { entryId = entrySymptom.EntryId, symptomId = entrySymptom.SymptomId },
                 entrySymptomDto);

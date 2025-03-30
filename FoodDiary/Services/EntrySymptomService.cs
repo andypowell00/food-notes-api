@@ -1,4 +1,4 @@
-﻿using FoodDiary.Data;
+using FoodDiary.Data;
 using FoodDiary.Models;
 using FoodDiary.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +25,7 @@ namespace FoodDiary.Services
         public async Task<EntrySymptom?> GetEntrySymptomByIdAsync(int entryId, int symptomId)
         {
             return await _context.EntrySymptoms
+                .Include(es => es.Symptom) // Include the Symptom navigation property
                 .FirstOrDefaultAsync(es => es.EntryId == entryId && es.SymptomId == symptomId);
         }
 

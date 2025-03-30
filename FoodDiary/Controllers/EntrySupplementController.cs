@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using FoodDiary.DTOs.Create;
 using FoodDiary.DTOs;
 using FoodDiary.Models;
@@ -47,7 +47,14 @@ namespace FoodDiary.Controllers
             var entrySupplement = _mapper.Map<EntrySupplement>(createEntrySupplementDto);
             await _entrySupplementService.CreateEntrySupplementAsync(entrySupplement);
 
-            var entrySupplementDto = _mapper.Map<EntrySupplementDto>(entrySupplement);
+            // Reload the entity with navigation properties after creation
+            var createdEntrySupplement = await _entrySupplementService.GetEntrySupplementByIdAsync(
+                entrySupplement.EntryId, entrySupplement.SupplementId);
+            
+            if (createdEntrySupplement == null)
+                return StatusCode(500, "Created entity could not be retrieved");
+
+            var entrySupplementDto = _mapper.Map<EntrySupplementDto>(createdEntrySupplement);
             return CreatedAtAction(nameof(GetEntrySupplementById),
                 new { entryId = entrySupplement.EntryId, supplementId = entrySupplement.SupplementId },
                 entrySupplementDto);

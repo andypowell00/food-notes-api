@@ -21,10 +21,9 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseCors("ProductionCors");
+    // Use custom API key authentication middleware only in non-development environments
+    app.UseMiddleware<ApiKeyMiddleware>();
 }
-
-// Use custom API key authentication middleware
-app.UseMiddleware<ApiKeyMiddleware>();
 
 // Enable Routing and Map Controllers
 app.UseRouting();
