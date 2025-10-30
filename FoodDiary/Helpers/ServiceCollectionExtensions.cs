@@ -59,6 +59,8 @@ namespace FoodDiary.Helpers
             services.AddScoped<IEntrySupplementService, EntrySupplementService>();
             services.AddScoped<ISafeIngredientService, SafeIngredientService>();
             services.AddScoped<IUnsafeIngredientService, UnsafeIngredientService>();
+            services.AddScoped<IMealService, MealService>();
+            services.AddScoped<IEntryMealService, EntryMealService>();
         }
         
         private static void ConfigureApiBehavior(IServiceCollection services)

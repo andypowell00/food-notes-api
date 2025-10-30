@@ -28,6 +28,22 @@ public class MappingProfile : Profile
         CreateMap<CreateIngredientDto, Ingredient>();
         CreateMap<UpdateIngredientDto, Ingredient>();
 
+        // Meal mappings
+        CreateMap<Meal, MealDto>();
+        CreateMap<CreateMealDto, Meal>();
+        CreateMap<UpdateMealDto, Meal>();
+
+        //EntryMeal mappings
+        CreateMap<EntryMeal, EntryMealDto>()
+            .ForMember(dest => dest.MealName, opt => opt.MapFrom(src => src.Meal.Name));
+        CreateMap<CreateEntryMealDto, EntryMeal>();
+
+        //EntryIngredient mappings
+        CreateMap<MealIngredient, MealIngredientDto>()
+            .ForMember(dest => dest.IngredientName, opt => opt.MapFrom(src => src.Ingredient.Name));
+        CreateMap<CreateMealIngredientDto, MealIngredient>();
+
+
         // Supplement mappings
         CreateMap<Supplement, SupplementDto>();
         CreateMap<CreateSupplementDto, Supplement>();
