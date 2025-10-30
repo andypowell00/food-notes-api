@@ -1,5 +1,7 @@
-using FoodDiary.Middleware;
+using FoodDiary.Data;
 using FoodDiary.Helpers;
+using FoodDiary.Middleware;
+using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +25,11 @@ else
     app.UseCors("ProductionCors");
     // Use custom API key authentication middleware only in non-development environments
     app.UseMiddleware<ApiKeyMiddleware>();
+}
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<FoodDiaryContext>();
+    db.Database.Migrate();
 }
 
 // Enable Routing and Map Controllers
